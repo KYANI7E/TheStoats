@@ -16,4 +16,4 @@ Olive: Art
 
 Sage: Programmer
 
-Eli: UI/UX, Programmer
+Eli: UI/UX, Programmer, Sounds
