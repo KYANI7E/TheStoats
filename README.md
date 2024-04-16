@@ -17,3 +17,7 @@ Olive: Art
 Sage: Programmer
 
 Eli: UI/UX, Programmer, Sounds
+
+
+# Assets
+[Font](https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059)
