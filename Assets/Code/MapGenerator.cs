@@ -119,6 +119,11 @@ public class MapGenerator : MonoBehaviour
     private List<Vector2> allPositons = new List<Vector2>();
     private List<Vector2> GenerateBaseLocations()
     {
+        Vector2[] ls = { new Vector2(0, 0), new Vector2(5, 5), new Vector2(5, 0), new Vector2(0, 5), new Vector2(-5, 0), new Vector2(-5, -5), new Vector2(0, -5),
+                            new Vector2(10, 0), new Vector2(10, 10), new Vector2(0, 10), new Vector2(-10, 0), new Vector2(-10, -10), new Vector2(0, -10), new Vector2(0, 0),
+                            new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 0)};
+        return new List<Vector2>( ls);
+
         for (int x = (int)bottomLeftCorner.x + 1; x < topRightCorner.x; x++) {
             for (int y = (int)bottomLeftCorner.y + 1; y < topRightCorner.y; y++) {
                 allPositons.Add(new Vector2(x, y));
@@ -200,7 +205,7 @@ public class Walker
     public bool Walk()    
     {
         // picking a direction to walk in
-        Vector2 direction;
+        Vector2 direction = Vector2.zero;
         Vector2 nextPos = Vector2.zero;
         bool notValidDirection = true;
         int count = 0;
@@ -223,7 +228,13 @@ public class Walker
         ConnectionInfo con;
         if (!map.TryGetValue(nextPos, out con)) {
             map.Add(nextPos, connected);
-        } else { 
+
+            if(Random.Range(0f,1f) > .7f) {
+                nextPos = nextPos + direction;
+                if (!map.TryGetValue(nextPos, out con)) 
+                    map.Add(nextPos, connected);
+            }
+        } else {
             //tile has been visited before so now we check the connection info on it
             connected.IsNewConnection(con);
         }

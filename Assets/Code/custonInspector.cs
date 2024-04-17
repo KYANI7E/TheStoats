@@ -14,6 +14,7 @@ public class custonInspector : Editor
         MapGenerator gen = (MapGenerator)target;
         if (GUILayout.Button("New Seed")) {
             gen.NewSeed();
+            gen.GenerateMap();
         }
 
         if (GUILayout.Button("Generate Map")) {
