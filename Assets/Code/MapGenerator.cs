@@ -9,6 +9,7 @@ public enum TileType { Floor, Wall}
 public class MapGenerator : MonoBehaviour
 {
 
+    public static MapGenerator instance;
 
     [SerializeField]
     private Tilemap floorTileMap;
@@ -42,6 +43,16 @@ public class MapGenerator : MonoBehaviour
     private int seed;
     public void NewSeed()
     { seed = Random.Range(0, 10000); }
+
+    public void Awake()
+    {
+        if (instance == null) {
+            instance = this;
+        } else if (instance != this) {
+            Destroy(this);
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -91,13 +102,16 @@ public class MapGenerator : MonoBehaviour
                 notConnected = !w.Walk();
             }
             timeOut++;
-            if (timeOut > 1000) {
+            if (timeOut > 10000) {
                 Debug.LogError("Walkers timeout");
                 break;
             }
             if(walkSteps < maxSteps) {
                 notConnected = true;
                 walkSteps++;
+            } else {
+
+                notConnected = false;
             }
 
         }
@@ -113,15 +127,18 @@ public class MapGenerator : MonoBehaviour
                 }
             }
         }
+
+        PathingMaster.instance.SetMap(map);
     }
 
     //open position out of range of any other starting location for another base
     private List<Vector2> allPositons = new List<Vector2>();
     private List<Vector2> GenerateBaseLocations()
     {
-        Vector2[] ls = { new Vector2(0, 0), new Vector2(5, 5), new Vector2(5, 0), new Vector2(0, 5), new Vector2(-5, 0), new Vector2(-5, -5), new Vector2(0, -5),
-                            new Vector2(10, 0), new Vector2(10, 10), new Vector2(0, 10), new Vector2(-10, 0), new Vector2(-10, -10), new Vector2(0, -10), new Vector2(0, 0),
-                            new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 0), new Vector2(0, 0)};
+        Vector2[] ls = { new Vector2(0, 0), 
+                        new Vector2(5, 5), new Vector2(5, 0), new Vector2(0, 5), new Vector2(-5, 0), new Vector2(-5, -5), new Vector2(0, -5),
+                        new Vector2(15, -15), new Vector2(-15, 15), new Vector2(-5, 5), new Vector2(5, -5),
+                        new Vector2(15, 0), new Vector2(15, 15), new Vector2(0, 15), new Vector2(-15, 0), new Vector2(-15, -15), new Vector2(0, -15)};
         return new List<Vector2>( ls);
 
         for (int x = (int)bottomLeftCorner.x + 1; x < topRightCorner.x; x++) {
@@ -194,10 +211,10 @@ public class Walker
             map.Add(startLocation, connected);
 
         //marking tiles adjasent to start location as visited
-        foreach (Vector2 d in allDirections) {
-            if (!map.ContainsKey(startLocation + d))
-                map.Add(startLocation + d, connected);
-        }
+        //foreach (Vector2 d in allDirections) {
+        //    if (!map.ContainsKey(startLocation + d))
+        //        map.Add(startLocation + d, connected);
+        //}
     }
 
     //returns true when conencted to four othter walkers
@@ -241,8 +258,16 @@ public class Walker
 
         curLocation = nextPos;
 
+        foreach (Vector2 d in directions) {
+            if (map.ContainsKey(curLocation + d))
+                continue;
+
+            if (!map.ContainsKey(curLocation + d))
+                map.Add(curLocation + d, connected);
+        }
+
         //if connected count == four than all walkers have a continous path to each other
-        if(connected.count >= 4) {
+        if (connected.count >= 4) {
             return true; 
         }
 
