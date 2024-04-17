@@ -21,6 +21,7 @@ Eli: UI/UX, Programmer, Sounds
 
 # Assets
 [Font](https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059)
+[UI Assets](https://assetstore.unity.com/packages/2d/gui/icons/2d-simple-ui-pack-218050)
 
 
 Need to fill out
