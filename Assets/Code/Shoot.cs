@@ -41,7 +41,7 @@ public class Shoot : MonoBehaviour
             return;
 
         Vector2 direction = ((Vector2)target.transform.position - (Vector2)barrel.transform.position).normalized;
-        transform.up = direction;
+        barrel.transform.up = direction;
     }
 
     private void FireProjectile()

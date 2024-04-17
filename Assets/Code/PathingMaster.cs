@@ -197,6 +197,14 @@ public class PathingMaster : MonoBehaviour
         crystalDown = Instantiate(crystal, center, Quaternion.identity);
         map[center].isGoal = true;
     }
+
+    public bool ValidSpawnPosition(Vector2 pos)
+    {
+        if (map.ContainsKey(pos))
+            return true;
+
+        return false;
+    }
 }
 
 public enum TraversType { Walkable, NotWalkable};
