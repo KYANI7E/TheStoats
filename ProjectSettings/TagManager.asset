@@ -41,3 +41,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Ground
+    uniqueID: 3336330933
+    locked: 0
+  - name: Tower Base
+    uniqueID: 3734916309
+    locked: 0
+  - name: Tower Top
+    uniqueID: 2012600339
+    locked: 0
+  - name: Unit
+    uniqueID: 3501644663
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1501853199
+    locked: 0
+  - name: Fog
+    uniqueID: 1365372915
+    locked: 0
