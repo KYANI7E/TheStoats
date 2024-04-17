@@ -49,9 +49,9 @@ public class SetSettings : MonoBehaviour
         settingsMenu = null;
 
         canvas = GameObject.Find("Canvas");
-        for (int i = 0; i < canvas.transform.GetChild(0).transform.childCount; i++) {
-            if (canvas.transform.GetChild(0).transform.GetChild(i).name == "SettingsMenu") {
-                settingsMenu = canvas.transform.GetChild(0).transform.GetChild(i).gameObject;
+        for (int i = 0; i < canvas.transform.GetChild(1).transform.childCount; i++) {
+            if (canvas.transform.GetChild(1).transform.GetChild(i).name == "SettingsMenu") {
+                settingsMenu = canvas.transform.GetChild(1).transform.GetChild(i).gameObject;
             }
         }
     }

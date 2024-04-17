@@ -46,4 +46,9 @@ public class PauseMenu : MonoBehaviour
         //Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
     }
+
+    public void Back() {
+        hideableUI.SetActive(true);
+        settingsMenu.SetActive(false);
+    }
 }
