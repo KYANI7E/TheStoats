@@ -75,5 +75,6 @@ public class Seed : MonoBehaviour
         int random = Random.Range(0, int.MaxValue);
         inputField.text = random.ToString();
         seedValue = random;
+        MapGenerator.instance.GenEverything();
     }
 }
