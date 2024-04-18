@@ -72,11 +72,12 @@ public class PathingMaster : MonoBehaviour
     public Stack<Node> AStar(Vector2 startPos, Vector2 goal, Searcher searcher)
     {
 
-        startPos = new Vector2((int)startPos.x, (int)startPos.y);
+        startPos = new Vector2(Mathf.RoundToInt(startPos.x), Mathf.RoundToInt(startPos.y));
         if(goal == Vector2.zero) {
             goal = crystalDown.transform.position;
         }
         goal = new Vector2((int)goal.x, (int)goal.y);
+        
         List<Node> open = new List<Node>();
         List<Node> closed = new List<Node>();
 
@@ -89,6 +90,7 @@ public class PathingMaster : MonoBehaviour
         Node goalNode = null;
 
         int timeOut = 0;
+
 
         while (open.Count > 0) {
 
@@ -106,6 +108,13 @@ public class PathingMaster : MonoBehaviour
             if (curNode.pos == goal) {
                 goalNode = curNode;
                 break;
+            }
+
+            if (map[goal].isFogged || searcher == Searcher.Fog) {
+                if (curNode.isFogged) {
+                    goalNode = curNode;
+                    break;
+                }
             }
 
             timeOut++;
@@ -171,12 +180,15 @@ public class PathingMaster : MonoBehaviour
             Node newNode = new Node(curNode.type, curNode.pos);
             newNode.Copy(curNode);
             path.Push(newNode);
-            curNode = curNode.parent;
             timeOut++;
+            Node prev = curNode;
+            curNode = curNode.parent;
+            prev.parent = null;
             if (timeOut > 1000) {
                 Debug.LogError("building path parent time out");
                 break;
             }
+
         }
         return path;
 
@@ -184,6 +196,10 @@ public class PathingMaster : MonoBehaviour
 
     private float Heuristic(Vector2 pos, Vector2 goal)
     {
+
+        if (map[goal].isFogged) {
+            return 0;
+        }
         float x = pos.x - goal.x;
         float y = pos.y - goal.y;
         return y + x;
@@ -194,6 +210,9 @@ public class PathingMaster : MonoBehaviour
     private float FogHueristic(Vector2 pos, Vector2 goal)
     {
         if (map[pos].isFogged) {
+            return 0;
+        }
+        if (map[goal].isFogged) {
             return 0;
         }
         float x = pos.x - goal.x;

@@ -124,6 +124,8 @@ MonoBehaviour:
   slider: {fileID: 3280058586600222983}
   ps: {fileID: 3939789219587893058}
   soulCost: 7
+  fadeTime: 1
+  sp: {fileID: 4533240114239009419}
 --- !u!58 &3930139991538279675
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -171,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10f1707cd3d66f4f823284d1548dea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   ps: {fileID: 2274716894232523971}
   fogRange: 1
   cc: {fileID: 9094054831927251122}
@@ -369,6 +371,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9fa138ceb40d0d045a3323a0108c09f3, type: 3}
+--- !u!212 &4533240114239009419 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1647558160708123839, guid: 9fa138ceb40d0d045a3323a0108c09f3, type: 3}
+  m_PrefabInstance: {fileID: 2896941244691893812}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7055360768808525154 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5322601149852210006, guid: 9fa138ceb40d0d045a3323a0108c09f3, type: 3}

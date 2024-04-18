@@ -257,6 +257,8 @@ MonoBehaviour:
   slider: {fileID: 1371539415234761010}
   ps: {fileID: 2535374407309932277}
   soulCost: 2
+  fadeTime: 1
+  sp: {fileID: 2877147297930733425}
 --- !u!58 &2919736357328793211
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -304,7 +306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10f1707cd3d66f4f823284d1548dea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   ps: {fileID: 6592496942827703820}
   fogRange: 2
   cc: {fileID: 8975976684149458564}

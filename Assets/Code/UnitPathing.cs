@@ -32,8 +32,7 @@ public class UnitPathing : MonoBehaviour, ISpeedBuff
     // Start is called before the first frame update
     void Start()
     {
-        path = PathingMaster.instance.AStar(transform.position, Vector2.zero, search);
-        curNode = path.Pop();
+        
         cc.radius = fogRange + .5f;
 
     }
@@ -41,6 +40,20 @@ public class UnitPathing : MonoBehaviour, ISpeedBuff
     // Update is called once per frame
     void Update()
     {
+
+        if (curNode == null || path.Count == 0) {
+            path = PathingMaster.instance.AStar(transform.position, Vector2.zero, search);
+            Debug.Log(path.Count);
+            if (curNode != null)
+                if (curNode.isFogged)
+                    clearFog = true;
+
+            if (path.Count == 0) {
+                GetComponent<Unit>().Fade();
+            } else {
+                curNode = path.Pop();
+            }
+        }
         if(GameState.instance.state == State.Play) {
             if (clearFog) {
                 PathingMaster.instance.ClearFog(curNode, fogRange);
@@ -75,6 +88,8 @@ public class UnitPathing : MonoBehaviour, ISpeedBuff
 
     private void Move()
     {
+        if (path.Count == 0)
+            return;
         if (curNode == null)
             curNode = path.Pop();
 
@@ -82,6 +97,7 @@ public class UnitPathing : MonoBehaviour, ISpeedBuff
         transform.Translate(dir.normalized * (speed+speedBuff) * Time.deltaTime);
 
         if (Vector2.Distance(curNode.pos, transform.position) < 0.02f) {
+            if (path.Count != 0)
             curNode = path.Pop();
 
         }

@@ -21,10 +21,18 @@ public class Unit : MonoBehaviour, IHealth, IHealBuff
 
     public int soulCost;
 
+    [SerializeField]
+    private float fadeTime;
+    private bool fading = false;
+
+    [SerializeField]
+    private SpriteRenderer sp;
+
     // Start is called before the first frame update
     void Start()
     {
         curHealth = maxHealth;
+
     }
 
     // Update is called once per frame
@@ -32,6 +40,31 @@ public class Unit : MonoBehaviour, IHealth, IHealBuff
     {
 
         Heal();
+    }
+
+    public void Fade()
+    {
+        if (!fading)
+            StartCoroutine(Fadee());
+        
+    }
+
+    IEnumerator Fadee()
+    {
+
+        float time = fadeTime;
+
+        while (true) { 
+            float a = Mathf.InverseLerp(0, fadeTime, time) / 3;
+            Color c = sp.color;
+            c.a = a;
+            sp.color = c;
+                yield return 0;
+            time -= Time.deltaTime;
+            if (time < 0)
+                break;
+        }
+        Die();
     }
 
     private void Heal()

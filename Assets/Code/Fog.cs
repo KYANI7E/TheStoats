@@ -18,19 +18,10 @@ public class Fog : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-            Debug.Log("Touch fog");
-        if (collision.CompareTag("Fog"))
-            Debug.Log("wwdwdw");
         if (collision.gameObject.GetComponentInParent<UnitPathing>() == null)
             return;
 
 
         collision.gameObject.GetComponentInParent<UnitPathing>().ClearFog();
-    }
-
-    public void OnCollisionEnter2D(Collision2D collision)
-    {
-            Debug.Log("Collided fog");
-
     }
 }

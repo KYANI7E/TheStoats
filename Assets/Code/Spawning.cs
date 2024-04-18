@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using TMPro;
 
 public class Spawning : MonoBehaviour
@@ -79,6 +80,9 @@ public class Spawning : MonoBehaviour
 
     private void SpawnUnit()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         if (GameState.instance.state != State.Setup)
             return;
             
