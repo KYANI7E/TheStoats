@@ -1,28 +1,38 @@
 # TheStoats
  Final Project for game technologies class
 
-Ideas:
-Reverse Tower Defense
+# Crystal Assault: Veiled Conquest
+MSCH-C220 Game Jam, April 2024
 
-Break crystal
+## Theme
+We interpreted the "reverse" theme as the reversal of a core game mechanic. Most tower defense games have the player root their towers down, while mobile enemies are able to move through a path with the goal of destroying the player's towers. We applied our interpretation by creating a reverse tower defense, where the player is essentially the antagonist, spawning the evil units to defeat the towers.
 
-Towers: Cannon(High damage, low fire rate), Bomb tower (AOE), Arrow (low damage, high fire rate)
+## Game Play
+The objective of the game is to explore the map, find the sacred crystal, and destroy it.
 
-Units: slime (basic), sorcerer (2 types - speed, healer), wolf (fast, low damage)
+To play, you will:
+- Spawn units using souls
+- Strategize on where your units will be most effective
+- Destroy towers blocking your progress
+- Destroy the crystal
 
-Terrain
+## Impediments
+We encountered some setbacks, including variables not existing in certain contexts since one team member had created it in a different scene. Additionally, we realized that we would need a lot more grass tiles than initially planned for, because the way the map generated them created oddly mismatched tiles.
 
-Olive: Art
+## Implementation
+### Features:
+- Fun music
+- Multiple enemies and spawnable units
+- Seed generator
+- Customizable settings
+- Riveting gameplay
+- Wacky particles
+- Scoring system
+- Health system
+- Currency
 
-Sage: Programmer
-
-Eli: UI/UX, Programmer, Sounds
-
-
-# Assets
+### Assets/Resources:
 [Font](https://assetstore.unity.com/packages/2d/fonts/free-pixel-font-thaleah-140059)
-
-[UI Assets](https://assetstore.unity.com/packages/2d/gui/icons/2d-simple-ui-pack-218050)
 
 [Sound Effects 1](https://pixabay.com/)
 
@@ -30,29 +40,12 @@ Eli: UI/UX, Programmer, Sounds
 
 [Music](https://youfulca.com/en/2022/08/10/8bit-battle03/)
 
-
-Need to fill out
-
-# Project Name
-MSCH-C220 Game Jam, April 2024
-
-## Theme
-How you thought about or interpreted the theme
-
-## Game Play
-Objective
-Game-play instructions
-
-## Impediments
-Struggles or surprises you encountered during the development of the game
-
-## Implementation
-Features
-Assets, or resources used
-
 ## References
+N/A
 
 ## Future Development
 
-# Created by: Group Name
-List of group members (and contributions)
+# Created by: The Stoats
+- Sage: Lead Programmer
+- Eli: Programmer, UI/UX Designer, Audio
+- Olive: Art, Animations, Audio
