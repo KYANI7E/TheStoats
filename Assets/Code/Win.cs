@@ -11,15 +11,32 @@ public class Win : MonoBehaviour
 
     public TextMeshProUGUI waveText;
 
+    public static Win instance;
+    
+    [SerializeField]
+    private int lives;
+
+
     // Start is called before the first frame update
     void Start() {
-
+        if (instance == null) {
+            instance = this;
+        } else if (instance != this) {
+            Destroy(this);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    public void LoseLife(int l)
+    {
+        lives -= l;
+        if (lives < 0)
+            WinGame();
     }
 
     public void WinGame() {

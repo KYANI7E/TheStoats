@@ -20,6 +20,9 @@ public class UnitPathing : MonoBehaviour
     [SerializeField]
     private Searcher search;
 
+    [SerializeField]
+    private int lifeCost;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +37,9 @@ public class UnitPathing : MonoBehaviour
     {
         if (!curNode.isGoal && GameState.instance.state == State.Play) {
            Move();   
+        }
+        if (curNode.isGoal) {
+            Win.instance.LoseLife(lifeCost);
         }
     }
 
