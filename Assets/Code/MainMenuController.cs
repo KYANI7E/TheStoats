@@ -25,7 +25,9 @@ public class MainMenuController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Back();
+        }
     }
 
     public void Play() {
