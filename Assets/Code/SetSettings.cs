@@ -30,41 +30,23 @@ public class SetSettings : MonoBehaviour
     private GameObject settingsMenu;
     bool setVarsBool = false;
 
-    private GameObject canvas;
+    private PauseMenu canvas;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        canvas = GameObject.Find("MainGameUI");
-        for (int i = 0; i < canvas.transform.GetChild(1).transform.childCount; i++) {
-            //Debug.Log(canvas.transform.GetChild(1).transform.GetChild(i));
-            if (canvas.transform.GetChild(1).transform.GetChild(i).gameObject.name == "SettingsMenu") {
-                settingsMenu = canvas.transform.GetChild(1).transform.GetChild(i).gameObject;
-            }
-            //if (canvas.transform.GetChild(1).transform.GetChild(i).name == "SettingsMenu") {
-            //    settingsMenu = canvas.transform.GetChild(i).transform.GetChild(i).gameObject;
-            //}
-        }
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+        FindSettings();
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
-        canvas = null;
-        settingsMenu = null;
-
-        canvas = GameObject.Find("Canvas");
-        for (int i = 0; i < canvas.transform.GetChild(1).transform.childCount; i++) {
-            if (canvas.transform.GetChild(1).transform.GetChild(i).name == "SettingsMenu") {
-                settingsMenu = canvas.transform.GetChild(1).transform.GetChild(i).gameObject;
-            }
-        }
+        FindSettings();
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        SceneManager.sceneLoaded += OnSceneLoaded;
-
+    void Update() { 
         if (settingsMenu.activeSelf == true) {
             if (!setVarsBool) {
                 SetVars();
@@ -92,5 +74,14 @@ public class SetSettings : MonoBehaviour
         brightnessNum = GameObject.Find("Brightness Number").GetComponent<TMP_Text>();
 
         soundSwitch = GameObject.Find("Sound Toggle").GetComponent<Toggle>();
+    }
+
+    private void FindSettings() {
+        try {
+            canvas = GameObject.Find("MainGameUI").GetComponent<PauseMenu>();
+            settingsMenu = canvas.settingsMenu;
+        } catch {
+
+        }
     }
 }
