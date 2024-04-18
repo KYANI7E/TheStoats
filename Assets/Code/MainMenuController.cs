@@ -11,8 +11,7 @@ public class MainMenuController : MonoBehaviour {
     private GameObject hideableUI;
     [SerializeField]
     private string gameScene;
-    [SerializeField]
-    private GameObject settingsMenu;
+    public GameObject settingsMenu;
     [SerializeField]
     private GameObject creditsMenu;
     [SerializeField]
