@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Unit : MonoBehaviour, IHealth
+public class Unit : MonoBehaviour, IHealth, IHealBuff
 {
 
     [SerializeField]
@@ -12,6 +12,12 @@ public class Unit : MonoBehaviour, IHealth
 
     [SerializeField]
     private Slider slider;
+
+    [SerializeField]
+    private ParticleSystem ps;
+    private float healTimer;
+    private float healCoolDown;
+    private float healAmount;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +28,23 @@ public class Unit : MonoBehaviour, IHealth
     // Update is called once per frame
     void Update()
     {
-        
+
+        Heal();
     }
 
+    private void Heal()
+    {
+        healCoolDown += Time.deltaTime;
+        if(healCoolDown > healTimer) {
+            ps.Stop();
+        } else {
+            curHealth += healAmount * Time.deltaTime;
+            if (curHealth > maxHealth)
+                curHealth = maxHealth;
+        }
+        float g = Mathf.InverseLerp(0, maxHealth, curHealth);
+        slider.value = g;
+    }
 
     public void DoDamage(float damage)
     {
@@ -41,5 +61,13 @@ public class Unit : MonoBehaviour, IHealth
     {
         Spawning.instance.UnitDied();
         Destroy(this.gameObject);
+    }
+
+    public void HealBuffed(float health, float healT)
+    {
+        ps.Play();
+        healAmount = health;
+        healTimer = healT;
+        healCoolDown = 0;
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitPathing : MonoBehaviour
+public class UnitPathing : MonoBehaviour, ISpeedBuff
 {
 
     private Stack<Node> path = new Stack<Node>();
@@ -11,6 +11,11 @@ public class UnitPathing : MonoBehaviour
 
     [SerializeField]
     private float speed;
+    private float speedBuff;
+    private float speedBuffTime;
+    private float speedBuffCoolDown;
+    [SerializeField]
+    private ParticleSystem ps;
 
     [SerializeField]
     private int fogRange;
@@ -23,6 +28,7 @@ public class UnitPathing : MonoBehaviour
     [SerializeField]
     private int lifeCost;
 
+    private bool clearFog = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,18 +41,36 @@ public class UnitPathing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(GameState.instance.state == State.Play) {
+            if (clearFog) {
+                PathingMaster.instance.ClearFog(curNode, fogRange);
+            }
+        }
         if (!curNode.isGoal && GameState.instance.state == State.Play) {
            Move();   
         }
         if (curNode.isGoal) {
             Win.instance.LoseLife(lifeCost);
-            Destroy(this.gameObject);
+            GetComponent<Unit>().DoDamage(Mathf.Infinity);
         }
+        CheckSpeedBuff();
+    }
+
+    private void CheckSpeedBuff()
+    {
+        speedBuffCoolDown += Time.deltaTime;
+        if(speedBuffCoolDown < speedBuffTime) {
+            return;
+        } else {
+            ps.Stop();
+            speedBuff = 0;
+        }
+
     }
 
     public void ClearFog()
     {
-        PathingMaster.instance.ClearFog(curNode, fogRange);
+        clearFog = true;
     }
 
     private void Move()
@@ -55,7 +79,7 @@ public class UnitPathing : MonoBehaviour
             curNode = path.Pop();
 
         Vector2 dir = (Vector2)curNode.pos - (Vector2)transform.position;
-        transform.Translate(dir.normalized * speed * Time.deltaTime);
+        transform.Translate(dir.normalized * (speed+speedBuff) * Time.deltaTime);
 
         if (Vector2.Distance(curNode.pos, transform.position) < 0.02f) {
             curNode = path.Pop();
@@ -64,5 +88,12 @@ public class UnitPathing : MonoBehaviour
 
     }
 
-
+    public void SpeedBuff(float speedinc, float speedT)
+    {
+        Debug.Log("SpeedBUFFED");
+        ps.Play();
+        speedBuff = speedinc;
+        speedBuffTime = speedT;
+        speedBuffCoolDown = 0;
+    }
 }

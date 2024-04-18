@@ -324,7 +324,6 @@ public class PathingMaster : MonoBehaviour
 
 
         if (map[pos].isFogged) {
-            Debug.Log("IS FOgge");
             return false;
         }
         

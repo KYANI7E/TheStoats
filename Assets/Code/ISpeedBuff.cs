@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface ISpeedBuff 
 {
-    public void SpeedBuff(float speedinc);
+    public void SpeedBuff(float speedinc, float speedT);
 
 }

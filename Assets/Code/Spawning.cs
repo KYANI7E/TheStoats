@@ -10,7 +10,9 @@ public class Spawning : MonoBehaviour
     [SerializeField]
     private GameObject curUnit;
 
-    private int unitsAlive = 0;
+    public int unitsAlive = 0;
+
+    private Dictionary<Vector2, GameObject> placed = new Dictionary<Vector2, GameObject>();
 
     private void Awake()
     {
@@ -34,8 +36,10 @@ public class Spawning : MonoBehaviour
     public void UnitDied()
     {
         unitsAlive--;
-        if (unitsAlive == 0)
+        if (unitsAlive == 0) {
             GameState.instance.state = State.Setup;
+            placed.Clear();
+        }
     }
 
     private void SpawnUnit()
@@ -51,10 +55,15 @@ public class Spawning : MonoBehaviour
         Vector2 pos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         pos = new Vector2(Mathf.RoundToInt(pos.x), Mathf.RoundToInt(pos.y));
 
+        if (placed.ContainsKey(pos))
+            return;
+
         if ( ! PathingMaster.instance.ValidSpawnPosition(pos))
             return;
 
-        Instantiate(curUnit, pos, Quaternion.identity);
+
+        GameObject g = Instantiate(curUnit, pos, Quaternion.identity);
+        placed.Add(pos, g);
         unitsAlive++;
     }
 }

@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -560050987
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 5482979443530930686, guid: 210e42b1ea3c1ed4e8dd02e53b8ea528, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -198,9 +198,9 @@ MonoBehaviour:
   barrel: {fileID: 7107403653697125514}
   barrelTip: {fileID: 7571014617928224138}
   range: 3
-  fireRate: 0.7
-  damage: 5
-  projectileSpeed: 8
+  fireRate: 2
+  damage: 3
+  projectileSpeed: 20
   shootSound: {fileID: 8300000, guid: e8f74f9e6a1b00449a0dc25277543326, type: 3}
 --- !u!1 &5182453561756708338
 GameObject:
@@ -273,7 +273,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2012600339
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 6579611855235724597, guid: 896c5f4733b8b374da5439024ef0d921, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

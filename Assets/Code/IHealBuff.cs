@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IHealBuff 
 {
-    public void HealBuffed(float health);
+    public void HealBuffed(float health, float healT);
 }

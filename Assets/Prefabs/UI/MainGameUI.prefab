@@ -681,9 +681,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 469999483625636702}
+      - m_Target: {fileID: 9073086569820138973}
         m_TargetAssemblyTypeName: UnitSelect, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: SelectUnitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -705,7 +705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022ae0128e893f447885887c67c0bf53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 0}
+  unit: {fileID: 5561016400901182191, guid: 576434bcceb164940a38e97d15e717c4, type: 3}
 --- !u!1 &561487583281570060
 GameObject:
   m_ObjectHideFlags: 0
@@ -6868,9 +6868,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7598940180416574065}
+      - m_Target: {fileID: 5322177807386005292}
         m_TargetAssemblyTypeName: UnitSelect, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: SelectUnitButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6892,7 +6892,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022ae0128e893f447885887c67c0bf53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 0}
+  unit: {fileID: 1538589943994859415, guid: b30ad8d2f0d57b34194f66b36a68e3fa, type: 3}
 --- !u!1 &7691529238967597667
 GameObject:
   m_ObjectHideFlags: 0
