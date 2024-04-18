@@ -35,9 +35,9 @@ public class MapGenerator : MonoBehaviour
     private Vector2 bottomLeftCorner;
 
     [SerializeField]
-    private int maxSteps;
+    public int maxSteps;
     [SerializeField]
-    private int fogSteps;
+    public int fogSteps;
         
     [SerializeField]
     private GameObject[] bases;//used to spawn the four bases
@@ -102,8 +102,11 @@ public class MapGenerator : MonoBehaviour
     {
         ClearMap(tilemap, complement);
 
-        if (Seed.instance != null)
+        if (Seed.instance != null) {
             seed = Seed.instance.GetSeed();
+            fogSteps = Seed.instance.fogSteps;
+            maxSteps = Seed.instance.landSteps;
+        }
 
         Random.InitState(seed);
 

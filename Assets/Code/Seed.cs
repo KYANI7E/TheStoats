@@ -25,6 +25,9 @@ public class Seed : MonoBehaviour
     
     private bool loaded = true;
 
+    public int landSteps;
+    public int fogSteps;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,7 +38,10 @@ public class Seed : MonoBehaviour
         }
 
         inputField = inputText.GetComponent<TMP_InputField>();
-    }
+
+        landSteps = MapGenerator.instance.maxSteps;
+        fogSteps = MapGenerator.instance.fogSteps;
+}
 
     // Update is called once per frame
     void Update() {

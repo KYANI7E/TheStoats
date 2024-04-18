@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/PlayScene.unity
+    guid: 91cb759e96d7b78439052689374117e3
+  - enabled: 1
     path: Assets/Scenes/TestingScenes/EliTesting.unity
     guid: 559f50bb0ff51d2409d6dd88eb703440
   m_configObjects: {}
