@@ -256,6 +256,7 @@ MonoBehaviour:
   maxHealth: 5
   slider: {fileID: 1371539415234761010}
   ps: {fileID: 2535374407309932277}
+  soulCost: 2
 --- !u!58 &2919736357328793211
 CircleCollider2D:
   m_ObjectHideFlags: 0

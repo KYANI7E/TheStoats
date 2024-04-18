@@ -6956,9 +6956,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   winScreen: {fileID: 3132232752430346606}
-  waveNumber: {fileID: 0}
+  waveNumber: {fileID: 277485433821624636}
   waveText: {fileID: 4520825499618968446}
-  lives: 0
+  lives: 10
 --- !u!1 &7471164471414257904
 GameObject:
   m_ObjectHideFlags: 0

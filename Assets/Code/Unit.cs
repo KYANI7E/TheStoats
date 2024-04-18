@@ -19,6 +19,8 @@ public class Unit : MonoBehaviour, IHealth, IHealBuff
     private float healCoolDown;
     private float healAmount;
 
+    public int soulCost;
+
     // Start is called before the first frame update
     void Start()
     {

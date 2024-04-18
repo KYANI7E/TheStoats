@@ -17,7 +17,7 @@ public class Win : MonoBehaviour
     public static Win instance;
     
     [SerializeField]
-    private int lives;
+    public int lives;
 
 
     // Start is called before the first frame update

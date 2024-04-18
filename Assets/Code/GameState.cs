@@ -39,6 +39,10 @@ public class GameState : MonoBehaviour
         if (Spawning.instance.unitsAlive == 0)
             return;
 
+        if (state != State.Setup)
+            return;
+
+
         state = State.Play;
         waveNum++;
     }
