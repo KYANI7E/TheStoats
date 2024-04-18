@@ -15,6 +15,8 @@ public class MainMenuController : MonoBehaviour {
     private GameObject settingsMenu;
     [SerializeField]
     private GameObject creditsMenu;
+    [SerializeField]
+    private GameObject seedMenu;
 
     // Start is called before the first frame update
     void Start() {
@@ -49,5 +51,11 @@ public class MainMenuController : MonoBehaviour {
         hideableUI.SetActive(true);
         settingsMenu.SetActive(false);
         creditsMenu.SetActive(false);
+        seedMenu.SetActive(false);
+    }
+
+    public void Seed() {
+        hideableUI.SetActive(false);
+        seedMenu.SetActive(true);
     }
 }
