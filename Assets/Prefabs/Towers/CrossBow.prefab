@@ -110,13 +110,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ff95dd97b47d744bd4210d6d29cbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 2039719378042071945, guid: 290d8405626abf34aa9d8379c9a8415e, type: 3}
+  projectile: {fileID: 7151582159582775533, guid: 37786b20cd8a0e44f80fc77579da5bc2, type: 3}
   barrel: {fileID: 3107316745064933503}
   barrelTip: {fileID: 3356979446079957507}
   range: 7
-  fireRate: 0.7
-  damage: 5
-  projectileSpeed: 8
+  fireRate: 1.4
+  damage: 8
+  projectileSpeed: 15
   shootSound: {fileID: 8300000, guid: e8f74f9e6a1b00449a0dc25277543326, type: 3}
 --- !u!1 &375992908293139625
 GameObject:

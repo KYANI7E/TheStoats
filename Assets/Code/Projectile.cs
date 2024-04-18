@@ -40,7 +40,7 @@ public class Projectile : MonoBehaviour
         if (Vector2.Distance(this.transform.position, target.transform.position) > 0.1f)
             return;
 
-        target.GetComponent<IHealth>().DoDamage(damage);
+        GetComponent<IProjectileDamage>().TargetReached(damage, target);
         Destroy(this.gameObject);
     }
 

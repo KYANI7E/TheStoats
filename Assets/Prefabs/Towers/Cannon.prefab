@@ -194,10 +194,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5ff95dd97b47d744bd4210d6d29cbda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 2039719378042071945, guid: 290d8405626abf34aa9d8379c9a8415e, type: 3}
+  projectile: {fileID: 900957955800099150, guid: 68d415fb70371254986cedcf350c3c89, type: 3}
   barrel: {fileID: 7992405227269828573}
   barrelTip: {fileID: 648687070938971726}
-  range: 0
+  range: 5
   fireRate: 0.7
   damage: 5
   projectileSpeed: 8
