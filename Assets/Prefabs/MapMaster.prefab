@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1403748825580858812
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1989332397305809722}
+  - component: {fileID: 5356678782113601923}
+  - component: {fileID: 7540954913918813119}
+  m_Layer: 0
+  m_Name: MapMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1989332397305809722
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403748825580858812}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -33.59, y: 8.08, z: 0.016592061}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5356678782113601923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403748825580858812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f092fbe371cd294097a80969cbfde60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorTileMap: {fileID: 0}
+  fogTileMap: {fileID: 0}
+  waterTileMap: {fileID: 0}
+  floor: {fileID: 11400000, guid: 93d5d76636ef02048bcc677dcda9e682, type: 2}
+  fog: {fileID: 11400000, guid: 17771311fc4c55a49ae7e7e549bcd4c1, type: 2}
+  water: {fileID: 11400000, guid: 21a443fea10246b448fe2460972c4332, type: 2}
+  topRightCorner: {x: 40, y: 40}
+  bottomLeftCorner: {x: -40, y: -40}
+  maxSteps: 538
+  fogSteps: 410
+  bases:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  minBaseSeperationDistance: 10
+  seed: 6986
+--- !u!114 &7540954913918813119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403748825580858812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36e5c9d79f32dfa48a9950a219dbe141, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundTileMap: {fileID: 0}
+  crystal: {fileID: 4228079065440327518, guid: b161a86e69291a64795692ded8fc4daa, type: 3}
+  amountOfTowers: 33
+  towers:
+  - {fileID: 4686156899028914402, guid: 8465a4540c989a94bba88902d22cbc78, type: 3}
+  - {fileID: 5096369536872578954, guid: 6b807299f7d325840a5683f2aedcb430, type: 3}
+  - {fileID: 211093315806105372, guid: 082bee7d4997ebd4ca9b70cff2ba1e00, type: 3}
+  spawnProbility:
+  - 0.7
+  - 0.1
+  - 0.2
+  fogTileMap: {fileID: 0}
