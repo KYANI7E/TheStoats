@@ -32,10 +32,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7466118020068098372}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -719, y: 450.13483}
-  m_SizeDelta: {x: 401.215, y: 149.257}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -217, y: -89.86517}
+  m_SizeDelta: {x: 401.21497, y: 149.25702}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &486354979702031220
 CanvasRenderer:
@@ -203,10 +203,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 7466118020068098372}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 748.9, y: 450.13483}
-  m_SizeDelta: {x: 401.215, y: 149.257}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 241, y: -89.86517}
+  m_SizeDelta: {x: 401.21497, y: 149.25702}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5623704089583982210
 CanvasRenderer:
@@ -841,7 +841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022ae0128e893f447885887c67c0bf53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 5561016400901182191, guid: 576434bcceb164940a38e97d15e717c4, type: 3}
+  unit: {fileID: 5628062047874426530, guid: 64e464bbf722dfa4a92bbd75dd5f88fb, type: 3}
 --- !u!1 &561487583281570060
 GameObject:
   m_ObjectHideFlags: 0
@@ -1137,7 +1137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022ae0128e893f447885887c67c0bf53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 3166721913567897607, guid: 63cbe03696a1b2d42af2584f206984c9, type: 3}
+  unit: {fileID: 1538589943994859415, guid: b30ad8d2f0d57b34194f66b36a68e3fa, type: 3}
 --- !u!1 &796160716248175156
 GameObject:
   m_ObjectHideFlags: 0
@@ -7522,7 +7522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 022ae0128e893f447885887c67c0bf53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unit: {fileID: 1538589943994859415, guid: b30ad8d2f0d57b34194f66b36a68e3fa, type: 3}
+  unit: {fileID: 5561016400901182191, guid: 576434bcceb164940a38e97d15e717c4, type: 3}
 --- !u!1 &7691529238967597667
 GameObject:
   m_ObjectHideFlags: 0
