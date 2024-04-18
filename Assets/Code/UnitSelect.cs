@@ -6,7 +6,7 @@ public class UnitSelect : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject unit;
+    public GameObject unit;
 
     
     public void SelectUnitButton()
