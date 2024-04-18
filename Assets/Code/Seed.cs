@@ -70,4 +70,10 @@ public class Seed : MonoBehaviour
     {
         return seedValue;
     }
+
+    public void GenRandom() {
+        int random = Random.Range(0, int.MaxValue);
+        inputField.text = random.ToString();
+        seedValue = random;
+    }
 }

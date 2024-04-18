@@ -34,8 +34,8 @@ public class Win : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        waveNumber.text = "Wave: " + GameState.instance.waveNum;
-        livesNumber.text = "Lives: " + Win.instance.lives;
+        //waveNumber.text = "Wave: " + GameState.instance.waveNum;
+        //livesNumber.text = "Lives: " + Win.instance.lives;
     }
 
     public void LoseLife(int l)
