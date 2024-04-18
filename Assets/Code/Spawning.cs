@@ -34,6 +34,13 @@ public class Spawning : MonoBehaviour
         }
     }
 
+    public void Start()
+    {
+        curMaxSouls = startSouls;
+        curSouls = curMaxSouls;
+        UpdateSoulsText();
+    }
+
     public void SelectUnit(GameObject obj)
     {
         curUnit = obj;
