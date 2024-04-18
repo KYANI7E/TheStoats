@@ -252,6 +252,7 @@ ScriptedImporter:
     cells:
     - name: arrowTower_Frame_0
       frameIndex: 0
+      additiveSortOrder: 0
       cellRect:
         x: 5
         y: 13
@@ -260,6 +261,7 @@ ScriptedImporter:
       spriteId: 3c299b9981ec12045a5bb6026c4e30ff
     - name: arrowTower_Frame_1
       frameIndex: 1
+      additiveSortOrder: 0
       cellRect:
         x: 5
         y: 11
@@ -268,6 +270,7 @@ ScriptedImporter:
       spriteId: dffe06cb21e239649b932332169c315d
     - name: arrowTower_Frame_2
       frameIndex: 2
+      additiveSortOrder: 0
       cellRect:
         x: 5
         y: 10
@@ -276,6 +279,7 @@ ScriptedImporter:
       spriteId: e02e0519e1dcf294798d5cab549f3ef7
     - name: arrowTower_Frame_3
       frameIndex: 3
+      additiveSortOrder: 0
       cellRect:
         x: 5
         y: 7
@@ -284,6 +288,7 @@ ScriptedImporter:
       spriteId: cba96b4720d82494e824e79098a9d11a
     - name: arrowTower_Frame_4
       frameIndex: 4
+      additiveSortOrder: 0
       cellRect:
         x: 5
         y: 6
@@ -292,6 +297,7 @@ ScriptedImporter:
       spriteId: e190d50d091edd3428e68863b004b170
     - name: arrowTower_Frame_5
       frameIndex: 5
+      additiveSortOrder: 0
       cellRect:
         x: 5
         y: 4

@@ -10,7 +10,7 @@ using UnityEngine.UI;
 public class SetSettings : MonoBehaviour
 {
     [SerializeField]
-    public static float musicVolume;
+    public static float musicVolume = 20;
     Slider musicSlider;
     TMP_Text musicNum;
     [SerializeField]
