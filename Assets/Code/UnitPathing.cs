@@ -40,6 +40,7 @@ public class UnitPathing : MonoBehaviour
         }
         if (curNode.isGoal) {
             Win.instance.LoseLife(lifeCost);
+            Destroy(this.gameObject);
         }
     }
 
