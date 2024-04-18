@@ -27,6 +27,8 @@ public class Unit : MonoBehaviour, IHealth, IHealBuff
 
     [SerializeField]
     private SpriteRenderer sp;
+    [SerializeField]
+    private GameObject cs;
 
     // Start is called before the first frame update
     void Start()
@@ -53,7 +55,7 @@ public class Unit : MonoBehaviour, IHealth, IHealBuff
     {
 
         float time = fadeTime;
-
+        cs.SetActive(false);
         while (true) { 
             float a = Mathf.InverseLerp(0, fadeTime, time) / 3;
             Color c = sp.color;

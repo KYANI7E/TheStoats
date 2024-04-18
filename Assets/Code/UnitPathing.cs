@@ -32,9 +32,8 @@ public class UnitPathing : MonoBehaviour, ISpeedBuff
     // Start is called before the first frame update
     void Start()
     {
-        
-        cc.radius = fogRange + .5f;
 
+        cc.radius = fogRange;
     }
 
     // Update is called once per frame
@@ -43,7 +42,6 @@ public class UnitPathing : MonoBehaviour, ISpeedBuff
 
         if (curNode == null || path.Count == 0) {
             path = PathingMaster.instance.AStar(transform.position, Vector2.zero, search);
-            Debug.Log(path.Count);
             if (curNode != null)
                 if (curNode.isFogged)
                     clearFog = true;

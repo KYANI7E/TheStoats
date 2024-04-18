@@ -125,6 +125,7 @@ MonoBehaviour:
   soulCost: 7
   fadeTime: 1
   sp: {fileID: 1192630620961102071}
+  cs: {fileID: 8353376021815016335}
 --- !u!58 &5671132940146373657
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -460,6 +461,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8353376021815016335 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1607011581957709124, guid: 0a2bd471f8d0c7349b3820833bbb1918, type: 3}
+  m_PrefabInstance: {fileID: 7322967064863024843}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8686490619793205913
 PrefabInstance:
   m_ObjectHideFlags: 0

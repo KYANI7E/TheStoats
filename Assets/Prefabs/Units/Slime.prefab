@@ -125,6 +125,7 @@ MonoBehaviour:
   soulCost: 1
   fadeTime: 1
   sp: {fileID: 4419079566056557418}
+  cs: {fileID: 6714941463937550745}
 --- !u!58 &6821201103285959407
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -176,7 +177,7 @@ MonoBehaviour:
   ps: {fileID: 6375451396848657512}
   fogRange: 1
   cc: {fileID: 5376962135748167394}
-  search: 0
+  search: 1
   lifeCost: 1
 --- !u!50 &255083270087268182
 Rigidbody2D:
@@ -541,5 +542,10 @@ MonoBehaviour:
 --- !u!224 &3770167565405877122 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9164632033513334623, guid: 0a2bd471f8d0c7349b3820833bbb1918, type: 3}
+  m_PrefabInstance: {fileID: 5439507411793417437}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6714941463937550745 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1607011581957709124, guid: 0a2bd471f8d0c7349b3820833bbb1918, type: 3}
   m_PrefabInstance: {fileID: 5439507411793417437}
   m_PrefabAsset: {fileID: 0}

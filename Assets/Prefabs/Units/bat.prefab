@@ -27,9 +27,9 @@ Transform:
   m_GameObject: {fileID: 724529492870688323}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.792, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: -0.497, z: 0}
+  m_LocalScale: {x: 2.85, y: 2.85, z: 0.57}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4864655105543443263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -259,6 +259,7 @@ MonoBehaviour:
   soulCost: 2
   fadeTime: 1
   sp: {fileID: 2877147297930733425}
+  cs: {fileID: 4772139844319234143}
 --- !u!58 &2919736357328793211
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -306,9 +307,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10f1707cd3d66f4f823284d1548dea1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 5
   ps: {fileID: 6592496942827703820}
-  fogRange: 2
+  fogRange: 1
   cc: {fileID: 8975976684149458564}
   search: 0
   lifeCost: 1
@@ -592,5 +593,10 @@ MonoBehaviour:
 --- !u!224 &3123276184173916740 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 9164632033513334623, guid: 0a2bd471f8d0c7349b3820833bbb1918, type: 3}
+  m_PrefabInstance: {fileID: 6086416311928608027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4772139844319234143 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1607011581957709124, guid: 0a2bd471f8d0c7349b3820833bbb1918, type: 3}
   m_PrefabInstance: {fileID: 6086416311928608027}
   m_PrefabAsset: {fileID: 0}
