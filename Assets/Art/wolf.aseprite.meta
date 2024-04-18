@@ -212,7 +212,6 @@ ScriptedImporter:
     cells:
     - name: wolf_Frame_0
       frameIndex: 0
-      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 5
@@ -221,7 +220,6 @@ ScriptedImporter:
       spriteId: cf85ef2755df2124f9698da3cd0a7617
     - name: wolf_Frame_1
       frameIndex: 1
-      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 5
@@ -230,7 +228,6 @@ ScriptedImporter:
       spriteId: 3f88768a0cc79cc4ea1d5c8ca4ca1e62
     - name: wolf_Frame_2
       frameIndex: 2
-      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 5
@@ -239,7 +236,6 @@ ScriptedImporter:
       spriteId: 87c2c4b219c16a7429a70c58f69a4c1c
     - name: wolf_Frame_3
       frameIndex: 3
-      additiveSortOrder: 0
       cellRect:
         x: 1
         y: 5

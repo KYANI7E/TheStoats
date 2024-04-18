@@ -6,6 +6,8 @@ TagManager:
   tags:
   - settingsmenu
   - audioplayer
+  - Fog
+  - Unit
   layers:
   - Default
   - TransparentFX
@@ -13,7 +15,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - FogEyes
   - 
   - 
   - 

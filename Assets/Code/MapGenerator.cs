@@ -14,13 +14,19 @@ public class MapGenerator : MonoBehaviour
     [SerializeField]
     private Tilemap floorTileMap;
     [SerializeField]
-    private Tilemap wallTileMap;
+    private Tilemap fogTileMap;
+    [SerializeField]
+    private Tilemap waterTileMap;
+
     [SerializeField]
     private TileBase floor;
     [SerializeField]
-    private TileBase wall;
+    private TileBase fog;
+    [SerializeField]
+    private TileBase water;
 
     private Dictionary<Vector2, ConnectionInfo> map = new Dictionary<Vector2, ConnectionInfo>();
+    private Dictionary<Vector2, ConnectionInfo> fogMap = new Dictionary<Vector2, ConnectionInfo>();
 
 
     [SerializeField]
@@ -30,6 +36,8 @@ public class MapGenerator : MonoBehaviour
 
     [SerializeField]
     private int maxSteps;
+    [SerializeField]
+    private int fogSteps;
         
     [SerializeField]
     private GameObject[] bases;//used to spawn the four bases
@@ -57,11 +65,16 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GenerateMap();
+        GenEverything();
     }
 
+    public void ClearEverything()
+    {
+        ClearMap(floorTileMap, waterTileMap);
+        ClearMap(fogTileMap, null);
+    }
 
-    public void ClearMap()
+    public void ClearMap(Tilemap tilemap, Tilemap complement)
     {
         foreach(GameObject g in basesDown) {
             DestroyImmediate(g);
@@ -70,25 +83,32 @@ public class MapGenerator : MonoBehaviour
 
         for (int x = (int)bottomLeftCorner.x; x <= topRightCorner.x; x++) {
             for (int y = (int)bottomLeftCorner.y; y <= topRightCorner.y; y++) {
-                floorTileMap.SetTile(new Vector3Int(x, y, 0), null);
-                //wallTileMap.SetTile(new Vector3Int(x, y, 0), null);
+                tilemap.SetTile(new Vector3Int(x, y, 0), null);
+                if(complement != null)
+                    complement.SetTile(new Vector3Int(x, y, 0), null);
             }
         }
     }
 
 
-    public void GenerateMap()
+    public void GenEverything()
     {
-        ClearMap();
+        GenerateMap(floorTileMap, floor, waterTileMap, water,ref map, maxSteps);
+        GenerateMap(fogTileMap, fog, null, null, ref fogMap, fogSteps);
+    }
+
+    public void GenerateMap(Tilemap tilemap, TileBase mainTile, Tilemap complement, TileBase compTile, ref Dictionary<Vector2, ConnectionInfo> curMap, int steps)
+    {
+        ClearMap(tilemap, complement);
 
         Random.InitState(seed);
 
-        map = new Dictionary<Vector2, ConnectionInfo>();
+        curMap = new Dictionary<Vector2, ConnectionInfo>();
         List<Vector2> spots = GenerateBaseLocations();
         List<Walker> walkers = new List<Walker>();
         for (int i = 0; i < spots.Count; i++) {
             //basesDown.Add(Instantiate(bases[i], spots[i], Quaternion.identity));
-            walkers.Add(new Walker(spots[i], map, topRightCorner, bottomLeftCorner));
+            walkers.Add(new Walker(spots[i], curMap, topRightCorner, bottomLeftCorner));
 
 
         }
@@ -106,7 +126,7 @@ public class MapGenerator : MonoBehaviour
                 Debug.LogError("Walkers timeout");
                 break;
             }
-            if(walkSteps < maxSteps) {
+            if(walkSteps < steps) {
                 notConnected = true;
                 walkSteps++;
             } else {
@@ -119,16 +139,25 @@ public class MapGenerator : MonoBehaviour
 
         for (int x = (int)bottomLeftCorner.x; x <= topRightCorner.x; x++) {
             for (int y = (int)bottomLeftCorner.y; y <= topRightCorner.y; y++) {
-                if (map.ContainsKey(new Vector2(x, y))) {
-                    floorTileMap.SetTile(new Vector3Int(x, y, 0), floor);
+                if (curMap.ContainsKey(new Vector2(x, y))) {
+                    tilemap.SetTile(new Vector3Int(x, y, 0), mainTile);
                 } else {
-                    //wallTileMap.SetTile(new Vector3Int(x, y, 0), wall);
+                    if(complement != null)
+                        complement.SetTile(new Vector3Int(x, y, 0), compTile);
 
                 }
             }
         }
 
-        PathingMaster.instance.SetMap(map);
+    }
+
+    public Dictionary<Vector2, ConnectionInfo> GetMap()
+    {
+        return map;
+    }
+    public Dictionary<Vector2, ConnectionInfo> GetFog()
+    {
+        return fogMap;
     }
 
     //open position out of range of any other starting location for another base

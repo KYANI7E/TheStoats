@@ -6,6 +6,7 @@ public class Shoot : MonoBehaviour
 {
 
     private GameObject target;
+    private List<GameObject> targetList = new List<GameObject>();
 
     [SerializeField]
     private GameObject projectile;
@@ -21,6 +22,11 @@ public class Shoot : MonoBehaviour
 
     [SerializeField]
     private float damage;
+    [SerializeField]
+    private float projectileSpeed;
+
+    [SerializeField]
+    private AudioClip shootSound;
 
     // Start is called before the first frame update
     void Start()
@@ -47,30 +53,39 @@ public class Shoot : MonoBehaviour
     private void FireProjectile()
     {
         coolDown += Time.deltaTime;
-        if (target == null)
-            return;
+        if (target == null) {
+            while(targetList.Count != 0) {
+                target = targetList[0];
+                targetList.RemoveAt(0);
+                if (target != null)
+                    break;
+            }
+            if (target == null)
+                return;
+        }
         if (coolDown < fireRate)
             return;
 
         coolDown = 0;
-        Instantiate(projectile, barrelTip.position, Quaternion.identity).GetComponent<Projectile>().Init(damage, target);
+        Instantiate(projectile, barrelTip.position, Quaternion.identity).GetComponent<Projectile>().Init(damage, projectileSpeed, target);
+        PlayAudio.Instance.PlayClip(shootSound);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (target != null)
+        if (!collision.CompareTag("Unit")) {
             return;
-
+        }
         if(collision.GetComponent<IHealth>() != null) {
-            target = collision.gameObject;
+            targetList.Add(collision.gameObject);
         }
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        if (target == null)
-            return;
+        if (targetList.Contains(collision.gameObject)) {
+            targetList.Remove(collision.gameObject);
+        }
 
-        target = null;
     }
 }

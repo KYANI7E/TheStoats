@@ -38,7 +38,7 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         MoveCamera();
-        if (!drag)
+        //if (!drag)
             ScrollCamera();
         DragBoi();
         cam.transform.position = ClampCamera(cam.transform.position);

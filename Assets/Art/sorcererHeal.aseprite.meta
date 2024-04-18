@@ -172,7 +172,6 @@ ScriptedImporter:
     cells:
     - name: sorcererHeal_Frame_0
       frameIndex: 0
-      additiveSortOrder: 0
       cellRect:
         x: 3
         y: 5
@@ -181,7 +180,6 @@ ScriptedImporter:
       spriteId: a677ec7514cf49048a5959c7ad7cb041
     - name: sorcererHeal_Frame_1
       frameIndex: 1
-      additiveSortOrder: 0
       cellRect:
         x: 3
         y: 5

@@ -14,15 +14,15 @@ public class custonInspector : Editor
         MapGenerator gen = (MapGenerator)target;
         if (GUILayout.Button("New Seed")) {
             gen.NewSeed();
-            gen.GenerateMap();
+            gen.GenEverything();
         }
 
         if (GUILayout.Button("Generate Map")) {
-            gen.GenerateMap();
+            gen.GenEverything();
         }
 
         if (GUILayout.Button("Clear Map")) {
-            gen.ClearMap();
+            gen.ClearEverything();
         }
     }
 }

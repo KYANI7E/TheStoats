@@ -7,9 +7,8 @@ public class Projectile : MonoBehaviour
 
     private float damage;
     private GameObject target;
-
-    [SerializeField]
     private float speed;
+
 
     // Start is called before the first frame update
     void Start()
@@ -17,10 +16,11 @@ public class Projectile : MonoBehaviour
         
     }
 
-    public void Init(float _damge, GameObject _target)
+    public void Init(float _damge, float _speed, GameObject _target)
     {
         damage = _damge;
         target = _target;
+        speed = _speed;
     }
 
     // Update is called once per frame

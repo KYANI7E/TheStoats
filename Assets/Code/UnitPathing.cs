@@ -7,16 +7,26 @@ public class UnitPathing : MonoBehaviour
 
     private Stack<Node> path = new Stack<Node>();
 
-    private Node curNode;
+    public Node curNode;
 
     [SerializeField]
     private float speed;
 
+    [SerializeField]
+    private int fogRange;
+    [SerializeField]
+    private CircleCollider2D cc;
+
+    [SerializeField]
+    private Searcher search;
+
     // Start is called before the first frame update
     void Start()
     {
-        path = PathingMaster.instance.AStar(transform.position, Vector2.zero);
+        path = PathingMaster.instance.AStar(transform.position, Vector2.zero, search);
         curNode = path.Pop();
+        cc.radius = fogRange + .5f;
+
     }
 
     // Update is called once per frame
@@ -25,6 +35,11 @@ public class UnitPathing : MonoBehaviour
         if (!curNode.isGoal) {
            Move();   
         }
+    }
+
+    public void ClearFog()
+    {
+        PathingMaster.instance.ClearFog(curNode, fogRange);
     }
 
     private void Move()
@@ -37,6 +52,7 @@ public class UnitPathing : MonoBehaviour
 
         if (Vector2.Distance(curNode.pos, transform.position) < 0.02f) {
             curNode = path.Pop();
+
         }
 
     }
