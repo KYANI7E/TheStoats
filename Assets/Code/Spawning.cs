@@ -25,6 +25,9 @@ public class Spawning : MonoBehaviour
     [SerializeField]
     private TMP_Text soulText;
 
+    [SerializeField]
+    private GameObject startWaveButton;
+
     private void Awake()
     {
         if(instance == null ) {
@@ -50,6 +53,11 @@ public class Spawning : MonoBehaviour
     public void Update()
     {
         SpawnUnit();
+        if(unitsAlive > 0) {
+            startWaveButton.SetActive(true);
+        } else {
+            startWaveButton.SetActive(false);
+        }
     }
 
     private void UpdateSoulsText()
