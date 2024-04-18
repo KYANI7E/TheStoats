@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 1709022971304551170}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.456, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 0, y: -0.493, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 4249582226572598710}
@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: -560050987
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8734298888866811995, guid: 05247917dac730846939ad5395798a7a, type: 3}
+  m_Sprite: {fileID: 5482979443530930686, guid: 210e42b1ea3c1ed4e8dd02e53b8ea528, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -99,7 +99,7 @@ GameObject:
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -197,6 +197,7 @@ MonoBehaviour:
   projectile: {fileID: 2039719378042071945, guid: 290d8405626abf34aa9d8379c9a8415e, type: 3}
   barrel: {fileID: 7992405227269828573}
   barrelTip: {fileID: 648687070938971726}
+  range: 0
   fireRate: 0.7
   damage: 5
   projectileSpeed: 8
@@ -226,7 +227,7 @@ Transform:
   m_GameObject: {fileID: 5277950071017625780}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.104, z: 0}
+  m_LocalPosition: {x: 0, y: 0.732, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -258,9 +259,9 @@ Transform:
   m_GameObject: {fileID: 6527623564672209348}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.284, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.004, y: -0.291, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8926555692003156505}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -341,7 +342,7 @@ Transform:
   m_GameObject: {fileID: 7992405227269828573}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.385, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

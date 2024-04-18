@@ -32,7 +32,7 @@ public class UnitPathing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!curNode.isGoal) {
+        if (!curNode.isGoal && GameState.instance.state == State.Play) {
            Move();   
         }
     }

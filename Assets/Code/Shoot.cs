@@ -17,6 +17,9 @@ public class Shoot : MonoBehaviour
     private Transform barrelTip;
 
     [SerializeField]
+    private int range;
+
+    [SerializeField]
     private float fireRate;
     private float coolDown;
 
@@ -31,7 +34,7 @@ public class Shoot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetComponent<CircleCollider2D>().radius = range + .5f;
     }
 
     // Update is called once per frame

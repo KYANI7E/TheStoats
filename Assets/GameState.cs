@@ -11,8 +11,10 @@ public class GameState : MonoBehaviour
 
     public State state;
 
+    public int waveNum = 0;
+
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         if (instance == null) {
             instance = this;
@@ -21,9 +23,20 @@ public class GameState : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        state = State.Setup;
+    }
+
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void StartWave()
+    {
+        state = State.Play;
+        waveNum++;
     }
 }

@@ -10,7 +10,7 @@ public class Spawning : MonoBehaviour
     [SerializeField]
     private GameObject curUnit;
 
-
+    private int unitsAlive = 0;
 
     private void Awake()
     {
@@ -31,8 +31,18 @@ public class Spawning : MonoBehaviour
         SpawnUnit();
     }
 
+    public void UnitDied()
+    {
+        unitsAlive--;
+        if (unitsAlive == 0)
+            GameState.instance.state = State.Setup;
+    }
+
     private void SpawnUnit()
     {
+        if (GameState.instance.state != State.Setup)
+            return;
+            
         if (curUnit == null)
             return;
 
@@ -45,5 +55,6 @@ public class Spawning : MonoBehaviour
             return;
 
         Instantiate(curUnit, pos, Quaternion.identity);
+        unitsAlive++;
     }
 }

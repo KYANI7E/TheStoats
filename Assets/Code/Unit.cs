@@ -32,6 +32,7 @@ public class Unit : MonoBehaviour, IHealth
 
     private void Die()
     {
+        Spawning.instance.UnitDied();
         Destroy(this.gameObject);
     }
 }
