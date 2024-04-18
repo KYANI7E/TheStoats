@@ -9,6 +9,9 @@ public class Win : MonoBehaviour
     [SerializeField]
     private GameObject winScreen;
 
+    [SerializeField]
+    private TMP_Text waveNumber;
+
     public TextMeshProUGUI waveText;
 
     public static Win instance;
@@ -29,7 +32,7 @@ public class Win : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //waveNumber.text = "Wave: " + GameState.instance.waveNum;
     }
 
     public void LoseLife(int l)
