@@ -36,11 +36,15 @@ public class SetSettings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        canvas = GameObject.Find("Canvas");
-        for (int i = 0; i < canvas.transform.childCount; i++) {
-            if (canvas.transform.GetChild(i).name == "SettingsMenu") {
-                settingsMenu = canvas.transform.GetChild(i).gameObject;
+        canvas = GameObject.Find("MainGameUI");
+        for (int i = 0; i < canvas.transform.GetChild(1).transform.childCount; i++) {
+            //Debug.Log(canvas.transform.GetChild(1).transform.GetChild(i));
+            if (canvas.transform.GetChild(1).transform.GetChild(i).gameObject.name == "SettingsMenu") {
+                settingsMenu = canvas.transform.GetChild(1).transform.GetChild(i).gameObject;
             }
+            //if (canvas.transform.GetChild(1).transform.GetChild(i).name == "SettingsMenu") {
+            //    settingsMenu = canvas.transform.GetChild(i).transform.GetChild(i).gameObject;
+            //}
         }
     }
 

@@ -63,7 +63,7 @@ public class Spawning : MonoBehaviour
 
     private void UpdateSoulsText()
     {
-        soulText.text = $"Souls: {curSouls}";
+        soulText.text = $"{curSouls}";
     }
 
     public void UnitDied()

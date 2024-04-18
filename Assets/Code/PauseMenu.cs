@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -52,5 +53,9 @@ public class PauseMenu : MonoBehaviour
     public void Back() {
         hideableUI.SetActive(true);
         settingsMenu.SetActive(false);
+    }
+
+    public void MainMenu() {
+        SceneManager.LoadScene("Main Menu");
     }
 }
