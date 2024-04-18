@@ -47,6 +47,7 @@ public class MapGenerator : MonoBehaviour
 
     private List<GameObject> basesDown = new List<GameObject>();
 
+
     [SerializeField]
     private int seed;
     public void NewSeed()

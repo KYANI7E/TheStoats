@@ -22,6 +22,9 @@ public class Seed : MonoBehaviour
     [SerializeField]
     private string seedText = null;
 
+    
+    private bool loaded = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,17 +39,26 @@ public class Seed : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        int value;
-        try {
-            seedText = inputField.text;
-            value = int.Parse(seedText);
-            seedValue = Mathf.Clamp(value, 0, int.MaxValue);
-        } catch {
+        if (inputField.isFocused) {
+            loaded = false;
+            int value;
+            try {
+                seedText = inputField.text;
+                value = int.Parse(seedText);
+                seedValue = Mathf.Clamp(value, 0, int.MaxValue);
+
+            } catch {
+
+            }
 
         }
-
-        
+        if (loaded == false && !inputField.isFocused) {
+            MapGenerator.instance.GenEverything();
+            loaded = true;
+        }
     }
+
+
 
     public int GetSeed()
     {
