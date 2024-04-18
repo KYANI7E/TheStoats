@@ -41,7 +41,7 @@ We encountered some setbacks, including variables not existing in certain contex
 [Music](https://youfulca.com/en/2022/08/10/8bit-battle03/)
 
 ## References
-N/A
+[Video Demo](https://drive.google.com/file/d/1h0KgEgv3GGs7mgNH-pgr92jiyWXvfkPH/view?usp=drive_link)
 
 ## Future Development
 
