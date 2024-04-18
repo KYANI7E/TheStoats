@@ -103,8 +103,6 @@ public class UnitPathing : MonoBehaviour, ISpeedBuff
         if (Vector2.Distance(curNode.pos, transform.position) < 0.02f) {
             if (path.Count != 0) {
                 curNode = path.Pop();
-                Debug.Log(curNode.pos);
-                Debug.Log(transform.position);
 
             }
 
