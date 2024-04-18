@@ -27,8 +27,10 @@ public class PauseMenu : MonoBehaviour
 
             if (paused) {
                 PauseMenuUI.SetActive(true);
+                Time.timeScale = 0f;
             } else {
                 PauseMenuUI.SetActive(false);
+                Time.timeScale = 1f;
             }
         }
     }
