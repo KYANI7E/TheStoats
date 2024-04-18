@@ -11,6 +11,8 @@ public class Win : MonoBehaviour
 
     [SerializeField]
     private TMP_Text waveNumber;
+    [SerializeField]
+    private TMP_Text livesNumber;
 
     public TextMeshProUGUI waveText;
 
@@ -33,6 +35,7 @@ public class Win : MonoBehaviour
     void Update()
     {
         waveNumber.text = "Wave: " + GameState.instance.waveNum;
+        livesNumber.text = "Lives: " + Win.instance.lives;
     }
 
     public void LoseLife(int l)
