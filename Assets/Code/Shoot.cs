@@ -31,6 +31,9 @@ public class Shoot : MonoBehaviour
     [SerializeField]
     private AudioClip shootSound;
 
+    [SerializeField]
+    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -68,6 +71,9 @@ public class Shoot : MonoBehaviour
         }
         if (coolDown < fireRate)
             return;
+
+        if (anim != null)
+            anim.SetTrigger("Shoot");
 
         coolDown = 0;
         Instantiate(projectile, barrelTip.position, Quaternion.identity).GetComponent<Projectile>().Init(damage, projectileSpeed, target);

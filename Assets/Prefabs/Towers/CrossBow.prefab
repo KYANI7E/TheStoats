@@ -118,6 +118,7 @@ MonoBehaviour:
   damage: 3
   projectileSpeed: 20
   shootSound: {fileID: 8300000, guid: e8f74f9e6a1b00449a0dc25277543326, type: 3}
+  anim: {fileID: 4210231147188875995}
 --- !u!1 &375992908293139625
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +356,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2daa9f6c59404b478be35aa73a1865e, type: 3}
+--- !u!95 &4210231147188875995 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5718109844448115664, guid: b2daa9f6c59404b478be35aa73a1865e, type: 3}
+  m_PrefabInstance: {fileID: 8446343254617884939}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5125750495778914334 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3608828727043770645, guid: b2daa9f6c59404b478be35aa73a1865e, type: 3}
