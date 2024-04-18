@@ -46,6 +46,6 @@ N/A
 ## Future Development
 
 # Created by: The Stoats
-- Sage: Lead Programmer
+- Sage: Lead Programmer, Lead Designer
 - Eli: Programmer, UI/UX Designer, Audio
 - Olive: Art, Animations, Audio
