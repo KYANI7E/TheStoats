@@ -58,7 +58,12 @@ public class Shoot : MonoBehaviour
 
     private void FireProjectile()
     {
+
         coolDown += Time.deltaTime;
+
+        if (GameState.instance.state != State.Play)
+            return;
+
         if (target == null) {
             while(targetList.Count != 0) {
                 target = targetList[0];

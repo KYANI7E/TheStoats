@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 2160036747687646432}
   - component: {fileID: 2074771176754486582}
   - component: {fileID: 6264426216616093981}
+  - component: {fileID: 5789340018241533754}
   m_Layer: 0
   m_Name: BombTower 1
   m_TagString: Untagged
@@ -202,6 +203,19 @@ MonoBehaviour:
   damage: 3
   projectileSpeed: 20
   shootSound: {fileID: 8300000, guid: e8f74f9e6a1b00449a0dc25277543326, type: 3}
+  anim: {fileID: 0}
+--- !u!114 &5789340018241533754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5096369536872578954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 936dc02574d4eff43a43190a6f37f885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5182453561756708338
 GameObject:
   m_ObjectHideFlags: 0

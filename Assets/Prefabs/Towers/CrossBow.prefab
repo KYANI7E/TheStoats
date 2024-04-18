@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3818240692437621186}
   - component: {fileID: 7165599562397343036}
   - component: {fileID: 1994857225989509933}
+  - component: {fileID: 5615847176412568882}
   m_Layer: 0
   m_Name: CrossBow
   m_TagString: Untagged
@@ -119,6 +120,18 @@ MonoBehaviour:
   projectileSpeed: 20
   shootSound: {fileID: 8300000, guid: e8f74f9e6a1b00449a0dc25277543326, type: 3}
   anim: {fileID: 4210231147188875995}
+--- !u!114 &5615847176412568882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211093315806105372}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 936dc02574d4eff43a43190a6f37f885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &375992908293139625
 GameObject:
   m_ObjectHideFlags: 0

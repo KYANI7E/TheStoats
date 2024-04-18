@@ -39,7 +39,11 @@ public class UnitPathing : MonoBehaviour, ISpeedBuff
     // Update is called once per frame
     void Update()
     {
-
+        if(curNode != null) {
+            if (curNode.type == TraversType.Built && search == Searcher.Tower) {
+                curNode.tower.KillTower();
+            }
+        }
         if (curNode == null || path.Count == 0) {
             path = PathingMaster.instance.AStar(transform.position, Vector2.zero, search);
             if (curNode != null)
@@ -55,6 +59,7 @@ public class UnitPathing : MonoBehaviour, ISpeedBuff
             if(GameState.instance.state == State.Play) {
                 if (clearFog) {
                     PathingMaster.instance.ClearFog(curNode, fogRange);
+                    //path = PathingMaster.instance.AStar(transform.position, Vector2.zero, search);
                 }
             }
             if (!curNode.isGoal && GameState.instance.state == State.Play) {
@@ -96,8 +101,12 @@ public class UnitPathing : MonoBehaviour, ISpeedBuff
         transform.Translate(dir.normalized * (speed+speedBuff) * Time.deltaTime);
 
         if (Vector2.Distance(curNode.pos, transform.position) < 0.02f) {
-            if (path.Count != 0)
-            curNode = path.Pop();
+            if (path.Count != 0) {
+                curNode = path.Pop();
+                Debug.Log(curNode.pos);
+                Debug.Log(transform.position);
+
+            }
 
         }
 

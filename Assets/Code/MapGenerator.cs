@@ -45,9 +45,6 @@ public class MapGenerator : MonoBehaviour
     private float minBaseSeperationDistance;
 
 
-    private List<GameObject> basesDown = new List<GameObject>();
-
-
     [SerializeField]
     private int seed;
     public void NewSeed()
@@ -72,15 +69,11 @@ public class MapGenerator : MonoBehaviour
     public void ClearEverything()
     {
         ClearMap(floorTileMap, waterTileMap);
-        ClearMap(fogTileMap, null);
+        ClearMap(fogTileMap);
     }
 
-    public void ClearMap(Tilemap tilemap, Tilemap complement)
+    public void ClearMap(Tilemap tilemap, Tilemap complement = null)
     {
-        foreach(GameObject g in basesDown) {
-            DestroyImmediate(g);
-        }
-        basesDown.Clear();
 
         for (int x = (int)bottomLeftCorner.x; x <= topRightCorner.x; x++) {
             for (int y = (int)bottomLeftCorner.y; y <= topRightCorner.y; y++) {
@@ -111,7 +104,7 @@ public class MapGenerator : MonoBehaviour
         Random.InitState(seed);
 
         curMap = new Dictionary<Vector2, ConnectionInfo>();
-        List<Vector2> spots = GenerateBaseLocations();
+        List<Vector2> spots = GenerateStartingLocations();
         List<Walker> walkers = new List<Walker>();
         for (int i = 0; i < spots.Count; i++) {
             //basesDown.Add(Instantiate(bases[i], spots[i], Quaternion.identity));
@@ -169,34 +162,13 @@ public class MapGenerator : MonoBehaviour
 
     //open position out of range of any other starting location for another base
     private List<Vector2> allPositons = new List<Vector2>();
-    private List<Vector2> GenerateBaseLocations()
+    private List<Vector2> GenerateStartingLocations()
     {
         Vector2[] ls = { new Vector2(0, 0), 
                         new Vector2(5, 5), new Vector2(5, 0), new Vector2(0, 5), new Vector2(-5, 0), new Vector2(-5, -5), new Vector2(0, -5),
                         new Vector2(15, -15), new Vector2(-15, 15), new Vector2(-5, 5), new Vector2(5, -5),
                         new Vector2(15, 0), new Vector2(15, 15), new Vector2(0, 15), new Vector2(-15, 0), new Vector2(-15, -15), new Vector2(0, -15)};
         return new List<Vector2>( ls);
-
-        for (int x = (int)bottomLeftCorner.x + 1; x < topRightCorner.x; x++) {
-            for (int y = (int)bottomLeftCorner.y + 1; y < topRightCorner.y; y++) {
-                allPositons.Add(new Vector2(x, y));
-            }
-        }
-
-        List<Vector2> locations = new List<Vector2>();
-        foreach(GameObject g in bases) {
-            locations.Add(Vector2.zero);
-        }
-        for(int i = 0; i < locations.Count; i++) {
-            if (allPositons.Count == 0) {
-                Debug.LogError("Base Gerenation Failed, No Valid position left");
-                break;
-            }
-            Vector2 candidateLocation = allPositons[Random.Range(0, allPositons.Count)]; //random place for a base
-            locations[i] = candidateLocation;
-            RemovePointsAround(minBaseSeperationDistance, candidateLocation);
-        }
-        return locations;
     }
 
     //will remove all position is range of center (a starting base location)

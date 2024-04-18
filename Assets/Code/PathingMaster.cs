@@ -117,6 +117,13 @@ public class PathingMaster : MonoBehaviour
                 }
             }
 
+            if (searcher == Searcher.Tower) {
+                if (curNode.type == TraversType.Built) {
+                    goalNode = curNode;
+                    break;
+                }
+            }
+
             timeOut++;
             if (timeOut > 6000) {
                 Debug.LogError("making a star path time out");
@@ -127,13 +134,23 @@ public class PathingMaster : MonoBehaviour
 
 
             foreach(Node child in adjacent) {
-                if (closed.Contains(child) || child.type != TraversType.Walkable)
+                if (closed.Contains(child) || (child.type != TraversType.Walkable && searcher != Searcher.Tower))
                     continue;
 
-                if(searcher == Searcher.Fog) {
+                if (searcher == Searcher.Fog) {
                     if (child.isFogged) {
                         child.G = curNode.G - 1;
                         child.H = FogHueristic(child.pos, goal);
+                        child.F = child.G + child.H;
+                    }
+                    child.G = curNode.G + 4;
+                    child.H = Heuristic(child.pos, goal);
+                    child.F = child.G + child.H;
+
+                } else if (searcher == Searcher.Tower) {
+                    if (child.type == TraversType.Built) {
+                        child.G = curNode.G - 6;
+                        child.H = Heuristic(child.pos, goal);
                         child.F = child.G + child.H;
                     }
                     child.G = curNode.G + 4;
@@ -193,6 +210,7 @@ public class PathingMaster : MonoBehaviour
         return path;
 
     }
+
 
     private float Heuristic(Vector2 pos, Vector2 goal)
     {
@@ -290,16 +308,27 @@ public class PathingMaster : MonoBehaviour
         }
         towersDown.Clear();
 
-        for(int i = 0; i < amountOfTowers; i++) {
-            float rangeFromCenter = Random.Range(7, 40);
-            Vector2 BL = center - new Vector2(rangeFromCenter, rangeFromCenter);
-            Vector2 TR = center + new Vector2(rangeFromCenter, rangeFromCenter);
+        bool reLook = false;
+        Vector2 BL = Vector2.zero;
+        Vector2 TR = Vector2.zero;
+        for (int i = 0; i < amountOfTowers; i++) {
+            if (reLook == false) {
+                float rangeFromCenter = Random.Range(7, 40);
+                BL = center - new Vector2(rangeFromCenter, rangeFromCenter);
+                TR = center + new Vector2(rangeFromCenter, rangeFromCenter);
+
+            }
             Vector2 pos = GetRandomPosition(BL, TR);
-            if(ValidBuildLocation(pos)) {
+            if (ValidBuildLocation(pos)) {
                 GameObject tower = Instantiate(SelectTower(), pos, Quaternion.identity);
                 map[pos].type = TraversType.Built;
+                map[pos].tower = tower.GetComponent<Tower>();
+                tower.GetComponent<Tower>().node = map[pos];
                 towersDown.Add(tower);
-
+                reLook = false;
+            } else {
+                reLook = true;
+                i--;
             }
         }
     }
@@ -377,6 +406,10 @@ public class Node
 
     public bool isFogged = false;
 
+    public Tower tower = null;
+
+    public Node realNode;
+
     public Node(TraversType _type, Vector2 _pos)
     {
         type = _type;
@@ -390,5 +423,14 @@ public class Node
         isGoal = n.isGoal;
         pos = n.pos;
         type = n.type;
+        tower = n.tower;
+        realNode = n;
+    }
+
+    public void LooseTower()
+    {
+        tower = null;
+        type = TraversType.Walkable;
+
     }
 }

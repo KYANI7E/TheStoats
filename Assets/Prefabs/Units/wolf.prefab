@@ -177,7 +177,7 @@ MonoBehaviour:
   ps: {fileID: 5567238950729819354}
   fogRange: 1
   cc: {fileID: 2108307543883287162}
-  search: 1
+  search: 2
   lifeCost: 1
 --- !u!50 &668853600183440322
 Rigidbody2D:
