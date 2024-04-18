@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 580156a0907b10149a62bb1c65b85140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: 1
   blast: {fileID: 1133882860971707018, guid: 6d755af2b4248ba448971de990ef7c74, type: 3}
 --- !u!1001 &8742692474432388649
 PrefabInstance:
