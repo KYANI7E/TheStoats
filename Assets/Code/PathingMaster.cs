@@ -269,7 +269,6 @@ public class PathingMaster : MonoBehaviour
         crystalDown = Instantiate(crystal, center, Quaternion.identity);
         map[center].isGoal = true;
 
-        GenerateTowers(center);
 
 
         // setup fog map
@@ -278,6 +277,10 @@ public class PathingMaster : MonoBehaviour
                 map[entry.Key].isFogged = true;
             }
         }
+
+
+        //gen towers
+        GenerateTowers(center);
     }
 
     private void GenerateTowers(Vector2 center)
@@ -304,6 +307,9 @@ public class PathingMaster : MonoBehaviour
     private bool ValidBuildLocation(Vector2 pos)
     {
         if (!map.ContainsKey(pos))
+            return false;
+
+        if (map[pos].isFogged == false)
             return false;
 
         if (map[pos].type == TraversType.Walkable)

@@ -101,6 +101,9 @@ public class MapGenerator : MonoBehaviour
     {
         ClearMap(tilemap, complement);
 
+        if (Seed.instance != null)
+            seed = Seed.instance.GetSeed();
+
         Random.InitState(seed);
 
         curMap = new Dictionary<Vector2, ConnectionInfo>();

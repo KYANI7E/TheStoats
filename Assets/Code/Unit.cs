@@ -57,7 +57,7 @@ public class Unit : MonoBehaviour, IHealth, IHealBuff
         float time = fadeTime;
         cs.SetActive(false);
         while (true) { 
-            float a = Mathf.InverseLerp(0, fadeTime, time) / 3;
+            float a = Mathf.InverseLerp(0, fadeTime, time);
             Color c = sp.color;
             c.a = a;
             sp.color = c;

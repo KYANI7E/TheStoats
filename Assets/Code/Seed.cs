@@ -47,4 +47,9 @@ public class Seed : MonoBehaviour
 
         
     }
+
+    public int GetSeed()
+    {
+        return seedValue;
+    }
 }

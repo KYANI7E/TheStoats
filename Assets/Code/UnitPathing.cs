@@ -51,20 +51,21 @@ public class UnitPathing : MonoBehaviour, ISpeedBuff
             } else {
                 curNode = path.Pop();
             }
-        }
-        if(GameState.instance.state == State.Play) {
-            if (clearFog) {
-                PathingMaster.instance.ClearFog(curNode, fogRange);
+        } else {
+            if(GameState.instance.state == State.Play) {
+                if (clearFog) {
+                    PathingMaster.instance.ClearFog(curNode, fogRange);
+                }
             }
+            if (!curNode.isGoal && GameState.instance.state == State.Play) {
+               Move();   
+            }
+            if (curNode.isGoal) {
+                Win.instance.LoseLife(lifeCost);
+                GetComponent<Unit>().DoDamage(Mathf.Infinity);
+            }
+            CheckSpeedBuff();
         }
-        if (!curNode.isGoal && GameState.instance.state == State.Play) {
-           Move();   
-        }
-        if (curNode.isGoal) {
-            Win.instance.LoseLife(lifeCost);
-            GetComponent<Unit>().DoDamage(Mathf.Infinity);
-        }
-        CheckSpeedBuff();
     }
 
     private void CheckSpeedBuff()
