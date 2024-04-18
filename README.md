@@ -28,6 +28,8 @@ Eli: UI/UX, Programmer, Sounds
 
 [Sound Effects 2](https://quicksounds.com/)
 
+[Music](https://youfulca.com/en/2022/08/10/8bit-battle03/)
+
 
 Need to fill out
 
