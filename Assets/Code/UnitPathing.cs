@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class UnitPathing : MonoBehaviour, ISpeedBuff
+public class UnitPathing : NetworkBehaviour, ISpeedBuff
 {
 
     private Stack<Node> path = new Stack<Node>();
@@ -39,6 +40,11 @@ public class UnitPathing : MonoBehaviour, ISpeedBuff
     // Update is called once per frame
     void Update()
     {
+        if (clearFog) {
+            PathingMaster.instance.ClearFog(transform.position.x, transform.position.y, fogRange);
+        }
+        if (!IsOwnedByServer) return;
+
         if(curNode != null) {
             if (curNode.type == TraversType.Built && search == Searcher.Tower) {
                 curNode.tower.KillTower();
@@ -58,7 +64,7 @@ public class UnitPathing : MonoBehaviour, ISpeedBuff
         } else {
             if(GameState.instance.state.Value == State.Play) {
                 if (clearFog) {
-                    PathingMaster.instance.ClearFog(curNode, fogRange);
+                    PathingMaster.instance.ClearFog(transform.position.x, transform.position.y, fogRange);
                     //path = PathingMaster.instance.AStar(transform.position, Vector2.zero, search);
                 }
             }

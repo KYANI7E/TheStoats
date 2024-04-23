@@ -82,7 +82,7 @@ public class Shoot : MonoBehaviour
 
         coolDown = 0;
         Instantiate(projectile, barrelTip.position, Quaternion.identity).GetComponent<Projectile>().Init(damage, projectileSpeed, target);
-        PlayAudio.Instance.PlayClip(shootSound);
+        //PlayAudio.Instance.PlayClip(shootSound);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

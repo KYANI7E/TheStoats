@@ -12,6 +12,9 @@ public class BaseBuilding : NetworkBehaviour
     public static BaseBuilding instance;
 
     [SerializeField]
+    private GameObject[] towers;
+
+    [SerializeField]
     private GameObject curUnit;
 
     [SerializeField]
@@ -30,14 +33,18 @@ public class BaseBuilding : NetworkBehaviour
         }
     }
 
-    public void SelectUnit(GameObject obj)
+    [ServerRpc(RequireOwnership =false)]
+    public void SelectUnitServerRpc(int i)
     {
-        curUnit = obj;
+        curUnit = towers[i];
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!IsOwner)
+            return;
+
         SpawnUnit();
     }
 
@@ -67,11 +74,10 @@ public class BaseBuilding : NetworkBehaviour
     [ClientRpc]
     public void GiveUpOwnerShipClientRpc()
     {
-        GetComponent<NetworkObject>().RemoveOwnership();
         spawnMenu.SetActive(false);
-        Color c = Color.white;
-        c.a = 1;
-        fog.color = c;
+        //Color c = Color.white;
+        //c.a = 1;
+        //fog.color = c;
     }
 
     private void SpawnUnit()
@@ -82,8 +88,6 @@ public class BaseBuilding : NetworkBehaviour
         if (GameState.instance.state.Value != State.Setup)
             return;
 
-        if (curUnit == null)
-            return;
 
         if (!Input.GetKeyDown(KeyCode.Mouse0))
             return;
@@ -99,10 +103,23 @@ public class BaseBuilding : NetworkBehaviour
         //if (curUnit.GetComponent<Unit>().soulCost > curSouls)
         //    return;
 
-        Debug.Log("Spawn unit");
+        SpawnUnitServerRpc((int)pos.x, (int)pos.y);
+
+    }
+
+
+    [ServerRpc]
+    private void SpawnUnitServerRpc(int x, int y)
+    {
+        if (curUnit == null)
+            return;
+
+
+        Debug.Log("Build Abse");
+        Vector2 pos = new Vector2(x, y);
         GameObject g = Instantiate(curUnit, pos, Quaternion.identity);
         g.GetComponent<NetworkObject>().Spawn(true);
         PathingMaster.instance.UpdateNodeWithBuilding(pos, g);
-
     }
+
 }

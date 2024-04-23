@@ -6,18 +6,16 @@ public class UnitSelect : MonoBehaviour
 {
 
     [SerializeField]
-    public GameObject unit;
+    public int unit;
 
     
     public void SelectUnitButton()
     {
-        Spawning.instance.SelectUnit(unit);
-        Debug.Log($"Selected: {unit}");
+        Spawning.instance.SelectUnitServerRpc(unit);
     }
 
     public void SelectTowertButton()
     {
-        BaseBuilding.instance.SelectUnit(unit);
-        Debug.Log($"Selected: {unit}");
+        BaseBuilding.instance.SelectUnitServerRpc(unit);
     }
 }

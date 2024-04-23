@@ -15,6 +15,9 @@ public class Spawning : NetworkBehaviour
     public static Spawning instance;
 
     [SerializeField]
+    private GameObject[] units;
+
+    [SerializeField]
     private GameObject curUnit;
 
     public int unitsAlive = 0;
@@ -53,9 +56,10 @@ public class Spawning : NetworkBehaviour
         UpdateSoulsText();
     }
 
-    public void SelectUnit(GameObject obj)
+    [ServerRpc(RequireOwnership = false)]
+    public void SelectUnitServerRpc(int i)
     {
-        curUnit = obj;
+        curUnit = units[i];
     }
 
     public void Update()
@@ -83,11 +87,10 @@ public class Spawning : NetworkBehaviour
     [ClientRpc]
     public void GiveUpOwnerShipClientRpc()
     {
-        GetComponent<NetworkObject>().RemoveOwnership();
         spawnMenu.SetActive(false);
-        Color c = Color.white;
-        c.a = 1;
-        fog.color = c;
+        //Color c = Color.white;
+        //c.a = 1;
+        //fog.color = c;
     }
 
     [ClientRpc]
@@ -149,13 +152,19 @@ public class Spawning : NetworkBehaviour
         if (curUnit.GetComponent<Unit>().soulCost > curSouls)
             return;
 
-        Debug.Log("Spawn unit");
 
+        SpawnUnitServerRpc((int)pos.x, (int)pos.y);
+        UpdateSoulsText();
+    }
+
+    [ServerRpc]
+    private void SpawnUnitServerRpc(int x, int y)
+    {
+        Vector2 pos = new Vector2(x, y);
         GameObject g = Instantiate(curUnit, pos, Quaternion.identity);
         g.GetComponent<NetworkObject>().Spawn(true);
         placed.Add(pos, g);
         unitsAlive++;
         curSouls -= g.GetComponent<Unit>().soulCost;
-        UpdateSoulsText();
     }
 }

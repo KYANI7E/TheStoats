@@ -49,9 +49,9 @@ public class PathingMaster : MonoBehaviour
         SetMap();
     }
 
-    public void ClearFog(Node node, int range)
+    public void ClearFog(float xx, float yy, int range)
     {
-        Vector2 center = node.pos;
+        Vector2 center = RoundVec(xx, yy);
         Vector2Int TR = new Vector2Int((int)center.x + (range + 1), (int)center.y + (range + 1));
         Vector2Int BL = new Vector2Int((int)center.x - (range + 1), (int)center.y - (range + 1));
 
@@ -67,6 +67,12 @@ public class PathingMaster : MonoBehaviour
 
                 fogTileMap.SetTile(new Vector3Int(x, y), null);
             }
+    }
+
+    private Vector2 RoundVec(float x, float y)
+    {
+        return new Vector2(Mathf.RoundToInt(x), Mathf.RoundToInt(y));
+
     }
 
     public Stack<Node> AStar(Vector2 startPos, Vector2 goal, Searcher searcher)
