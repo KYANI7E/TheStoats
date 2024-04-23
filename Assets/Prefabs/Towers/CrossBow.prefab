@@ -118,7 +118,7 @@ MonoBehaviour:
   fireRate: 1.5
   damage: 3
   projectileSpeed: 20
-  shootSound: {fileID: 8300000, guid: e8f74f9e6a1b00449a0dc25277543326, type: 3}
+  shootSound: {fileID: 8300000, guid: 7e958a0dc66eb6f4c8c2848db8daf88f, type: 3}
   anim: {fileID: 4210231147188875995}
 --- !u!114 &5615847176412568882
 MonoBehaviour:
