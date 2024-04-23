@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 public class CameraController : MonoBehaviour
 {
@@ -24,12 +25,14 @@ public class CameraController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+        transform.position = new Vector3(0, 0, -10);
         mapMaxY = (mapSize.y/2) - .5f + extraSpace;
         mapMinY = -(mapSize.y / 2)  + .5f - extraSpace;
         mapMaxX = (mapSize.x/2) - .5f + extraSpace;
         mapMinX = -(mapSize.x / 2) + .5f - extraSpace;
 
-        cam = Camera.main;
+        cam = this.gameObject.GetComponent<Camera>();
     }
 
 

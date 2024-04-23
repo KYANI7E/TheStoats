@@ -110,7 +110,7 @@ public class PathingMaster : MonoBehaviour
                 break;
             }
 
-            if (map[goal].isFogged || searcher == Searcher.Fog) {
+            if (/*map[goal].isFogged || */searcher == Searcher.Fog) {
                 if (curNode.isFogged) {
                     goalNode = curNode;
                     break;
@@ -215,9 +215,9 @@ public class PathingMaster : MonoBehaviour
     private float Heuristic(Vector2 pos, Vector2 goal)
     {
 
-        if (map[goal].isFogged) {
-            return 0;
-        }
+        //if (map[goal].isFogged) {
+        //    return 0;
+        //}
         float x = pos.x - goal.x;
         float y = pos.y - goal.y;
         return y + x;
@@ -245,7 +245,7 @@ public class PathingMaster : MonoBehaviour
     {
         Vector2[] dirs = Shuffle(directions);
         List<Node> ls = new List<Node>();
-        foreach(Vector2 v in dirs) {
+        foreach(Vector2 v in directions) {
 
             if(map.ContainsKey(node.pos + v)) {
                 ls.Add(map[node.pos + v]);
@@ -333,7 +333,7 @@ public class PathingMaster : MonoBehaviour
         }
     }
 
-    private bool ValidBuildLocation(Vector2 pos)
+    public bool ValidBuildLocation(Vector2 pos)
     {
         if (!map.ContainsKey(pos))
             return false;
@@ -346,6 +346,12 @@ public class PathingMaster : MonoBehaviour
 
 
         return false;
+    }
+
+    public void UpdateNodeWithBuilding(Vector2 pos, GameObject building)
+    {
+        map[pos].type = TraversType.Built;
+        map[pos].tower = building.GetComponent<Tower>();
     }
 
     private GameObject SelectTower()

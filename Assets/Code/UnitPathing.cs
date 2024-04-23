@@ -56,13 +56,13 @@ public class UnitPathing : MonoBehaviour, ISpeedBuff
                 curNode = path.Pop();
             }
         } else {
-            if(GameState.instance.state == State.Play) {
+            if(GameState.instance.state.Value == State.Play) {
                 if (clearFog) {
                     PathingMaster.instance.ClearFog(curNode, fogRange);
                     //path = PathingMaster.instance.AStar(transform.position, Vector2.zero, search);
                 }
             }
-            if (!curNode.isGoal && GameState.instance.state == State.Play) {
+            if (!curNode.isGoal && GameState.instance.state.Value == State.Play) {
                Move();   
             }
             if (curNode.isGoal) {

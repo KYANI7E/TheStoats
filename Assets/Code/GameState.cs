@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
 
 public enum State { Play, Setup, Pause, Lose, Win}
-public class GameState : MonoBehaviour
+public class GameState : NetworkBehaviour
 {
 
     public static GameState instance;
 
-    public State state;
+    public NetworkVariable<State> state = new NetworkVariable<State>(State.Setup);
 
     public int waveNum = 0;
 
@@ -27,13 +28,13 @@ public class GameState : MonoBehaviour
 
     void Start()
     {
-        state = State.Setup;
+        state.Value = State.Setup;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(state == State.Setup) {
+        if(state.Value == State.Setup) {
             setupUI.SetActive(true);
         }
     }
@@ -43,12 +44,12 @@ public class GameState : MonoBehaviour
         if (Spawning.instance.unitsAlive == 0)
             return;
 
-        if (state != State.Setup)
+        if (state.Value != State.Setup)
             return;
 
         setupUI.SetActive(false);
 
-        state = State.Play;
+        state.Value = State.Play;
         waveNum++;
     }
 }

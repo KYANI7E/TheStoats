@@ -14,4 +14,10 @@ public class UnitSelect : MonoBehaviour
         Spawning.instance.SelectUnit(unit);
         Debug.Log($"Selected: {unit}");
     }
+
+    public void SelectTowertButton()
+    {
+        BaseBuilding.instance.SelectUnit(unit);
+        Debug.Log($"Selected: {unit}");
+    }
 }

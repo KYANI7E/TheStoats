@@ -1,11 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using Unity.Netcode;
 using UnityEngine.EventSystems;
 using TMPro;
 
-public class Spawning : MonoBehaviour
+public class Spawning : NetworkBehaviour
 {
+
+    [SerializeField]
+    private GameObject spawnMenu;
 
     public static Spawning instance;
 
@@ -29,6 +34,9 @@ public class Spawning : MonoBehaviour
     [SerializeField]
     private GameObject startWaveButton;
 
+    [SerializeField]
+    private Tilemap fog;
+
     private void Awake()
     {
         if(instance == null ) {
@@ -48,11 +56,13 @@ public class Spawning : MonoBehaviour
     public void SelectUnit(GameObject obj)
     {
         curUnit = obj;
-        curMaxSouls = startSouls;
     }
 
     public void Update()
     {
+        if (!IsOwner)
+            return;
+
         SpawnUnit();
         if(unitsAlive > 0) {
             startWaveButton.SetActive(true);
@@ -60,6 +70,40 @@ public class Spawning : MonoBehaviour
             startWaveButton.SetActive(false);
         }
     }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SetPlayerServerRpc(ulong clientId) {
+        GetComponent<NetworkObject>().ChangeOwnership(clientId);
+        UpdatePlayerClientRpc();
+        BaseBuilding.instance.GiveUpOwnerShipClientRpc();
+
+
+    }
+
+    [ClientRpc]
+    public void GiveUpOwnerShipClientRpc()
+    {
+        GetComponent<NetworkObject>().RemoveOwnership();
+        spawnMenu.SetActive(false);
+        Color c = Color.white;
+        c.a = 1;
+        fog.color = c;
+    }
+
+    [ClientRpc]
+    public void UpdatePlayerClientRpc()
+    {
+        Color c = Color.white;
+        if (IsOwner) {
+            spawnMenu.SetActive(true);
+            c.a = 1;
+        } else {
+            spawnMenu.SetActive(false);
+            c.a = .70f;
+        }
+        fog.color = c;
+    }
+
 
     private void UpdateSoulsText()
     {
@@ -69,8 +113,8 @@ public class Spawning : MonoBehaviour
     public void UnitDied()
     {
         unitsAlive--;
-        if (unitsAlive == 0 && GameState.instance.state == State.Play) {
-            GameState.instance.state = State.Setup;
+        if (unitsAlive == 0 && GameState.instance.state.Value == State.Play) {
+            GameState.instance.state.Value = State.Setup;
             curMaxSouls = Mathf.RoundToInt(curMaxSouls * soulMultiplier);
             curSouls = curMaxSouls;
             UpdateSoulsText();
@@ -83,7 +127,7 @@ public class Spawning : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        if (GameState.instance.state != State.Setup)
+        if (GameState.instance.state.Value != State.Setup)
             return;
             
         if (curUnit == null)
@@ -100,13 +144,15 @@ public class Spawning : MonoBehaviour
 
         if ( ! PathingMaster.instance.ValidSpawnPosition(pos))
             return;
+        
 
         if (curUnit.GetComponent<Unit>().soulCost > curSouls)
             return;
 
-
+        Debug.Log("Spawn unit");
 
         GameObject g = Instantiate(curUnit, pos, Quaternion.identity);
+        g.GetComponent<NetworkObject>().Spawn(true);
         placed.Add(pos, g);
         unitsAlive++;
         curSouls -= g.GetComponent<Unit>().soulCost;

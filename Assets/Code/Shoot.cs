@@ -61,7 +61,7 @@ public class Shoot : MonoBehaviour
 
         coolDown += Time.deltaTime;
 
-        if (GameState.instance.state != State.Play)
+        if (GameState.instance.state.Value != State.Play)
             return;
 
         if (target == null) {
